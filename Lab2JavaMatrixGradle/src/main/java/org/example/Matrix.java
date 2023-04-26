@@ -3,10 +3,11 @@ package org.example;
 import java.util.Scanner;
 import java.util.Locale;
 
+//Step4. Додати методи, що дозволяють отримати заданий елемент, рядок чи стовпчик
 public class Matrix {
-    private int rows;
-    private int cols;
-    private double[][] data;
+    private final int rows;
+    private final int cols;
+    private final double[][] data;
 
     // Конструктор матриці заданного розміру
     public Matrix(int rows, int cols) {
@@ -51,7 +52,7 @@ public class Matrix {
         }
     }
     //Метод заповнення матриці рандомними значеннями
-    public void autoFill() {
+    public void autoFill(){
         for(int i=0;i<rows;i++){
             for (int j=0;j<cols;j++){
                 data[i][j]=(int) (-20 + (Math.random() * 50));
@@ -83,6 +84,38 @@ public class Matrix {
     public int getCols() {
         return cols;
     }
+
+    // Метод, що повертає значення заданого елемента матриці
+    public double getElement(int row, int col) {
+        if (row >= 0 && row < rows && col >= 0 && col < cols) {
+            return data[row][col];
+        } else {
+            throw new RuntimeException("Неправильні індекси рядка або стовпця");
+        }
+    }
+
+    // Метод, що повертає рядок матриці за заданим індексом
+    public double [] getRow(int row) {
+        if (row >= 0 && row < rows) {
+            return data[row];
+        } else {
+            throw new RuntimeException("Неправильний індекс рядка");
+        }
+    }
+    // Метод, що повертає стовпець матриці за заданим індексом
+    public double [] getColumn(int col) {
+        if (col >= 0 && col < cols) {
+            double[] column = new double[rows];
+            for (int i = 0; i < rows; i++) {
+                column[i] = data[i][col];
+            }
+            return column;
+        } else {
+            throw new RuntimeException("Неправильний індекс стовпця");
+        }
+    }
+
+
     // Метод для виведення матриці у вигляді рядків
     public void print() {
         if ( rows !=0 && cols !=0) {

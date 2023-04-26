@@ -75,4 +75,23 @@ public class MatrixTest {
         // Перевірка вмісту матриці після заповнення
         matrix.print();
     }
+
+    //Step4. Додати методи, що дозволяють отримати заданий елемент, рядок чи стовпчик
+    @Test
+    public void testMatrixGetElementRowColumn() {
+        Matrix matrix = new Matrix(2, 2);
+        matrix.setElement(0, 0, 1.0);
+        matrix.setElement(0, 1, 2.0);
+        matrix.setElement(1, 0, 3.0);
+        matrix.setElement(1, 1, 4.0);
+        Assertions.assertEquals(1.0, matrix.getElement(0, 0));
+        Assertions.assertEquals(2.0, matrix.getElement(0, 1));
+        Assertions.assertEquals(3.0, matrix.getElement(1, 0));
+        Assertions.assertEquals(4.0, matrix.getElement(1, 1));
+        double[] row = matrix.getRow(1);
+        Assertions.assertArrayEquals(new double[]{3.0, 4.0}, row);
+        double[] column = matrix.getColumn(0);
+        Assertions.assertArrayEquals(new double[]{1.0, 3.0}, column);
+    }
+
 }

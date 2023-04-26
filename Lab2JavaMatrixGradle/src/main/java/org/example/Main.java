@@ -17,7 +17,7 @@ public class Main {
         matrix.print();
         matrix1.print();
     */
-
+    /*
         //Step3. Додати методи, що дозволяють заповнити матрицю значеннями
         Matrix matrix = new Matrix(2,2);
         matrix.setElement(0, 0, 1.0);
@@ -35,6 +35,24 @@ public class Main {
 
         matrix.manualFill();
         matrix.print();
+    */
+
+        //Step4. Додати методи, що дозволяють отримати заданий елемент, рядок чи стовпчик
+        Matrix matrix = new Matrix(2,2);
+        double[][] data = {{9.9,8.8},{7.7,6.6}};
+        matrix.fillWithData(data);
+
+        System.out.print("Значення заданого елемента: " + matrix.getElement(1,1));
+        double[] row = matrix.getRow(0);
+        System.out.print("\nЗначення елементів рядка: ");
+        for (double element : row) {
+           System.out.print(element + " ");
+        }
+        System.out.print("\nЗначення елементів стовпця: ");
+        double[] col = matrix.getColumn(1);
+        for (double element : col) {
+           System.out.print(element + " ");
+        }
 
     }
 

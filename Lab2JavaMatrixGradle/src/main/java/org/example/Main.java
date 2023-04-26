@@ -54,10 +54,25 @@ public class Main {
            System.out.print(element + " ");
         }
     */
+    /*
         //Step5.Метод, що повертає розмірність матриці у вигляді масиву [рядки, стовпці]
         Matrix matrix = new Matrix(2,2);
         int[] size = matrix.getSize();
         System.out.println("Розмірність матриці "+ size[0]+"x"+size[1]);
+    */
+        //Step6. Equals\HashCode
+        Matrix matrix = new Matrix(3,3);
+        double[][] data = {{1.0, 2.0, 3.0}, {4.0, 5.0, 6.0}, {7.0, 8.0, 9.0}};
+        matrix.fillWithData(data);
+        Matrix matrix1 = new Matrix(3,3);
+        double[][] data1 = {{1.0, 2.0, 3.0}, {4.0, 5.0, 6.0}, {7.0, 8.0, 9.0}};
+        matrix1.fillWithData(data1);
+        System.out.println(matrix.equals(matrix1));
+
+        System.out.println(matrix.hashCode());
+        System.out.println(matrix1.hashCode());
+
     }
+
 
 }

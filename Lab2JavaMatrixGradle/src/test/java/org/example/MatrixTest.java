@@ -102,4 +102,24 @@ public class MatrixTest {
         Assertions.assertArrayEquals(new int[]{2, 2}, size);
     }
 
+    //Step6. Equals/hashCode
+    @Test
+    public void testMatrixEquals() {
+        Matrix matrix = new Matrix(3, 3);
+        double[][] data = {{1.0, 2.0, 3.0}, {4.0, 5.0, 6.0}, {7.0, 8.0, 9.0}};
+        matrix.fillWithData(data);
+        Matrix matrix1 = new Matrix(3, 3);
+        double[][] data1 = {{1.0, 2.0, 3.0}, {4.0, 5.0, 6.0}, {7.0, 8.0, 9.0}};
+        matrix1.fillWithData(data1);
+        Assertions.assertEquals(matrix, matrix1);
+    }
+
+    @Test
+    public void testHashCode() {
+        Matrix matrix = new Matrix(3, 3);
+        double[][] data = {{1.0, 2.0, 3.0}, {4.0, 5.0, 6.0}, {7.0, 8.0, 9.0}};
+        matrix.fillWithData(data);
+        Matrix matrix1 = new Matrix(matrix);
+        Assertions.assertEquals(matrix.hashCode(), matrix1.hashCode());
+    }
 }

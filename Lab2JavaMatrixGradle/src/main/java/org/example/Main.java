@@ -119,6 +119,15 @@ public class Main {
 
         System.out.println(matrix.hashCode());
         */
+
+        //Step.8 Diagonal matrix from vector
+        double[] diagonal = {1.0,2.0,3.0};
+        Matrix matrix = Matrix.diagonalMatrix(diagonal);
+        ImmutableMatrix m;
+        m = ImmutableMatrix.diagonalMatrix(diagonal);
+        matrix.print();
+        m.print();
+
     }
 
 

@@ -159,4 +159,20 @@ public class Matrix {
             System.out.println("Пуста матриця");
         }
     }
+
+    // Метод для створення діагональнлї матриці (на основі задано вектора)
+    public static Matrix diagonalMatrix(double[] vector) {
+        int size = vector.length;
+        Matrix matrix = new Matrix(size, size);
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                if (i == j) {
+                    matrix.data[i][j] = vector[i];
+                } else {
+                    matrix.data[i][j] = 0.0;
+                }
+            }
+        }
+        return matrix;
+    }
 }

@@ -199,4 +199,20 @@ public class MatrixTest {
         ImmutableMatrix matrix1 = new ImmutableMatrix(matrix);
         Assertions.assertEquals(matrix.hashCode(), matrix1.hashCode());
     }
+
+    // Step.8 Diagonal matrix from vector
+    @Test
+    public void testDiagonalMatricesFromVector() {
+        // Ініціалізація діагональної матриці
+        double[] diagonal = {1.0, 2.0, 3.0};
+        Matrix matrix = Matrix.diagonalMatrix(diagonal);
+        ImmutableMatrix m = ImmutableMatrix.diagonalMatrix(diagonal);
+        // m.print();
+        // Перевірка правильності створення діагональної матриці з вектора
+        double[][] expected = {{1.0, 0.0, 0.0}, {0.0, 2.0, 0.0}, {0.0, 0.0, 3.0}};
+        Assertions.assertArrayEquals(expected, matrix.getData());
+        Assertions.assertArrayEquals(expected, m.getData());
+        //   assertTrue(matrix.equals(m));// result=false тому що різні класи
+    }
+
 }

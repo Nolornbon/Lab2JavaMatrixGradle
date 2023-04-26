@@ -148,4 +148,9 @@ public class ImmutableMatrix {
             System.out.println("Пуста матриця");
         }
     }
+    //Метод для створення діагональнлї матриці (на основі задано вектора)
+    public static ImmutableMatrix diagonalMatrix(double[] vector) {
+        Matrix matrix = Matrix.diagonalMatrix(vector);
+        return new ImmutableMatrix(matrix);
+    }
 }

@@ -3,11 +3,10 @@ package org.example;
 import java.util.Scanner;
 import java.util.Locale;
 
-//Step4. Додати методи, що дозволяють отримати заданий елемент, рядок чи стовпчик
 public class Matrix {
     private final int rows;
     private final int cols;
-    private final double[][] data;
+    private  final double[][] data;
 
     // Конструктор матриці заданного розміру
     public Matrix(int rows, int cols) {
@@ -52,7 +51,7 @@ public class Matrix {
         }
     }
     //Метод заповнення матриці рандомними значеннями
-    public void autoFill(){
+    public void autoFill() {
         for(int i=0;i<rows;i++){
             for (int j=0;j<cols;j++){
                 data[i][j]=(int) (-20 + (Math.random() * 50));
@@ -114,7 +113,13 @@ public class Matrix {
             throw new RuntimeException("Неправильний індекс стовпця");
         }
     }
-
+    // Метод, що повертає розмірність матриці у вигляді масиву [рядки, стовпці]
+    public int[] getSize() {
+        int[] size = new int[2];
+        size[0] = this.getRows();
+        size[1] = this.getCols();
+        return size;
+    }
 
     // Метод для виведення матриці у вигляді рядків
     public void print() {

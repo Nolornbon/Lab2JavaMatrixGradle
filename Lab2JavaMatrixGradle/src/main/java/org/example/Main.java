@@ -36,7 +36,7 @@ public class Main {
         matrix.manualFill();
         matrix.print();
     */
-
+    /*
         //Step4. Додати методи, що дозволяють отримати заданий елемент, рядок чи стовпчик
         Matrix matrix = new Matrix(2,2);
         double[][] data = {{9.9,8.8},{7.7,6.6}};
@@ -53,7 +53,11 @@ public class Main {
         for (double element : col) {
            System.out.print(element + " ");
         }
-
+    */
+        //Step5.Метод, що повертає розмірність матриці у вигляді масиву [рядки, стовпці]
+        Matrix matrix = new Matrix(2,2);
+        int[] size = matrix.getSize();
+        System.out.println("Розмірність матриці "+ size[0]+"x"+size[1]);
     }
 
 }

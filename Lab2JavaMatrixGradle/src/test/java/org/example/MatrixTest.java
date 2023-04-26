@@ -94,4 +94,12 @@ public class MatrixTest {
         Assertions.assertArrayEquals(new double[]{1.0, 3.0}, column);
     }
 
+    //Step5.    Метод, що повертає розмірність матриці у вигляді масиву [рядки, стовпці]
+    @Test
+    public void testMatrixGetSize() {
+        Matrix matrix = new Matrix(2, 2);
+        int[] size = matrix.getSize();
+        Assertions.assertArrayEquals(new int[]{2, 2}, size);
+    }
+
 }

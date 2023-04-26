@@ -153,4 +153,23 @@ public class ImmutableMatrix {
         Matrix matrix = Matrix.diagonalMatrix(vector);
         return new ImmutableMatrix(matrix);
     }
+
+    // Методи, що перетворюють матрицю в нижню та верхню трикутну. (створюють нові матриці для Immutable)
+
+    // Метод для перетворення матриці на нижню трикутну форму
+    public ImmutableMatrix toLowerTriangular() {
+        Matrix matrix = new Matrix(this.getRows(),this.getCols());
+        matrix.fillWithData(this.getData());
+        matrix = matrix.toLowerTriangular();
+        return new ImmutableMatrix(matrix);
+    }
+    // Метод для перетворення матриці на верхню трикутну форму
+    public ImmutableMatrix toUpperTriangular() {
+        Matrix matrix = new Matrix(this.getRows(),this.getCols());
+        matrix.fillWithData(this.getData());
+        matrix = matrix.toUpperTriangular();
+        return new ImmutableMatrix(matrix);
+    }
 }
+
+

@@ -175,4 +175,71 @@ public class Matrix {
         }
         return matrix;
     }
+
+    // Методи, що перетворюють матрицю в нижню та верхню трикутну.
+
+    // Метод для перетворення матриці на нижню трикутну форму
+    public Matrix toLowerTriangular() {
+        if (isLowerTriangular()) {
+            System.out.println("Матриця вже є нижньою трикутною");
+            return this;
+        }
+        if (rows != cols) {
+            throw new RuntimeException ("Матриця не є квадратною");
+        }
+        Matrix result = new Matrix(rows, cols);
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (i >= j) {
+                    result.data[i][j] = data[i][j];
+                } else {
+                    result.data[i][j] = 0.0;
+                }
+            }
+        }
+        return result;
+    }
+    private boolean isLowerTriangular() {
+        for (int i = 0; i < rows; i++) {
+            for (int j = i + 1; j < cols; j++) {
+                if (data[i][j] != 0.0) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    // Метод для перетворення матриці на верхню трикутну форму
+    public Matrix toUpperTriangular() {
+        if (isUpperTriangular()) {
+            System.out.println("Матриця вже є верхньою трикутною");
+            return this;
+        }
+        if (rows != cols) {
+            throw new IllegalStateException("Матриця не є квадратною");
+        }
+        Matrix result = new Matrix(rows, cols);
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (i <= j) {
+                    result.data[i][j] = data[i][j];
+                } else {
+                    result.data[i][j] = 0.0;
+                }
+            }
+        }
+        return result;
+    }
+    public boolean isUpperTriangular() {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < i; j++) {
+                if (data[i][j] != 0.0) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }
+

@@ -119,7 +119,7 @@ public class Main {
 
         System.out.println(matrix.hashCode());
         */
-
+    /*
         //Step.8 Diagonal matrix from vector
         double[] diagonal = {1.0,2.0,3.0};
         Matrix matrix = Matrix.diagonalMatrix(diagonal);
@@ -127,6 +127,16 @@ public class Main {
         m = ImmutableMatrix.diagonalMatrix(diagonal);
         matrix.print();
         m.print();
+    */
+
+        //Step9.Методи, що перетворюють матрицю в нижню та верхню трикутну. (створюють нові матриці для Immutable)
+        double[][] data = {{1.0, 2.0, 3.0}, {4.0, 5.0, 6.0}, {7.0, 8.0, 9.0}};
+        ImmutableMatrix matrix1 = new ImmutableMatrix(data);
+        ImmutableMatrix matrix2 = matrix1.toLowerTriangular();
+        ImmutableMatrix matrix3 = matrix1.toUpperTriangular();
+        matrix1.print();
+        matrix2.print();
+        matrix3.print();
 
     }
 

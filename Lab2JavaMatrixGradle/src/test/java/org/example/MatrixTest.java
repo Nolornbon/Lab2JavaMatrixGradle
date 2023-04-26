@@ -215,4 +215,48 @@ public class MatrixTest {
         //   assertTrue(matrix.equals(m));// result=false тому що різні класи
     }
 
+    //Step9.Методи, що перетворюють матрицю в нижню та верхню трикутну.
+    @Test
+    public void testToLowerTriangular() {
+        double[][] data = {{1.0, 2.0, 3.0}, {4.0, 5.0, 6.0}, {7.0, 8.0, 9.0}};
+        Matrix matrix = new Matrix(3, 3);
+        matrix.fillWithData(data);
+//        matrix.print();
+        matrix = matrix.toLowerTriangular();
+        //      matrix.print();
+        double[][] expected = {{1.0, 0.0, 0.0}, {4.0, 5.0, 0.0}, {7.0, 8.0, 9.0}};
+        Assertions.assertArrayEquals(expected, matrix.getData());
+
+
+        ImmutableMatrix matrix1 = new ImmutableMatrix(data);
+        ImmutableMatrix matrix2 = matrix1.toLowerTriangular();
+        //      matrix2.print();
+        //      matrix1.print();
+        // Перевірка правильності перетворення в нижню трикутну матрицю
+        double[][] expected1 = {{1.0, 0.0, 0.0}, {4.0, 5.0, 0.0}, {7.0, 8.0, 9.0}};
+        Assertions.assertArrayEquals(expected1, matrix2.getData());
+        Assertions.assertArrayEquals(data,matrix1.getData());
+    }
+
+    @Test
+    public void testToUpperTriangular() {
+        double[][] data = {{1.0, 2.0, 3.0}, {4.0, 5.0, 6.0}, {7.0, 8.0, 9.0}};
+        Matrix matrix = new Matrix(3, 3);
+        matrix.fillWithData(data);
+        matrix = matrix.toUpperTriangular();
+        //      matrix.print();
+        double[][] expected = {{1.0, 2.0, 3.0}, {0.0, 5.0, 6.0}, {0.0, 0.0, 9.0}};
+        Assertions.assertArrayEquals(expected, matrix.getData());
+
+        ImmutableMatrix matrix1 = new ImmutableMatrix(data);
+        ImmutableMatrix matrix2 = matrix1.toUpperTriangular();
+        //      matrix2.print();
+        //      matrix1.print();
+        // Перевірка правильності перетворення в нижню трикутну матрицю
+        double[][] expected1 = {{1.0, 2.0, 3.0}, {0.0, 5.0, 6.0}, {0.0, 0.0, 9.0}};
+        Assertions.assertArrayEquals(expected1, matrix2.getData());
+        Assertions.assertArrayEquals(data,matrix1.getData());
+    }
+
 }
+

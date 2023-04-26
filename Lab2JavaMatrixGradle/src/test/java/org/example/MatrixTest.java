@@ -122,4 +122,81 @@ public class MatrixTest {
         Matrix matrix1 = new Matrix(matrix);
         Assertions.assertEquals(matrix.hashCode(), matrix1.hashCode());
     }
+
+    //Step7. Immutable Matrix
+    @Test
+    public void testEmptyImmutableMatrixCreation() {
+        ImmutableMatrix matrix = new ImmutableMatrix();
+        Assertions.assertEquals(0, matrix.getRows());
+        Assertions.assertEquals(0, matrix.getCols());
+    }
+
+    @Test
+    public void testImmutableMatrixCreationWithZero() {
+        ImmutableMatrix matrix = new ImmutableMatrix(2, 2);
+        double[][] actualData = matrix.getData();
+        double[][] expectedData = {{0.0, 0.0}, {0.0, 0.0}};
+        Assertions.assertArrayEquals(expectedData, actualData);
+    }
+
+    @Test
+    public void testImmutableMatrixCreationWithArray() {
+        double[][] data = {{1.0, 2.0, 3.0}, {4.0, 5.0, 6.0}, {7.0, 8.0, 9.0}};
+        ImmutableMatrix matrix = new ImmutableMatrix(data);
+        double[][] actualData = matrix.getData();
+        double[][] expectedData = {{1.0, 2.0, 3.0}, {4.0, 5.0, 6.0}, {7.0, 8.0, 9.0}};
+        Assertions.assertArrayEquals(expectedData, actualData);
+    }
+
+    @Test
+    public void testImmutableMatrixCreationWithCopy() {
+        double[][] data = {{1.0, 2.0}, {3.0, 4.0}};
+        ImmutableMatrix matrix1 = new ImmutableMatrix(data);
+        ImmutableMatrix matrix = new ImmutableMatrix(matrix1);//копія з класу ImmutableMatrix
+        double[][] data1 = {{1.1, 2.1}, {3.1, 4.1}};
+        Matrix matrix2 = new Matrix(2, 2);
+        matrix2.fillWithData(data1);
+        ImmutableMatrix matrix3 = new ImmutableMatrix(matrix2);//копія з класу Matrix
+        double[][] actualData1 = matrix.getData();
+        double[][] expectedData1 = {{1.0, 2.0}, {3.0, 4.0}};
+        Assertions.assertArrayEquals(expectedData1, actualData1);
+        double[][] actualData2 = matrix3.getData();
+        double[][] expectedData2 = {{1.1, 2.1}, {3.1, 4.1}};
+        Assertions.assertArrayEquals(expectedData2, actualData2);
+    }
+
+    @Test
+    public void testImmutableMatrixGetElementRowColumn() {
+        double[][] data = {{1.0, 2.0, 3.0}, {4.0, 5.0, 6.0}, {7.0, 8.0, 9.0}};
+        ImmutableMatrix matrix = new ImmutableMatrix(data);
+        Assertions.assertEquals(5.0, matrix.getElement(1, 1));
+        double[] row = matrix.getRow(1);
+        Assertions.assertArrayEquals(new double[]{4.0, 5.0, 6.0}, row);
+        double[] column = matrix.getColumn(2);
+        Assertions.assertArrayEquals(new double[]{3.0, 6.0, 9.0}, column);
+    }
+
+    @Test
+    public void testImmutableMatrixGetSize() {
+        ImmutableMatrix matrix = new ImmutableMatrix(2, 2);
+        int[] size = matrix.getSize();
+        Assertions.assertArrayEquals(new int[]{2, 2}, size);
+    }
+
+    @Test
+    public void testImmutableMatrixEquals() {
+        double[][] data = {{1.0, 2.0, 3.0}, {4.0, 5.0, 6.0}, {7.0, 8.0, 9.0}};
+        ImmutableMatrix matrix = new ImmutableMatrix(data);
+        double[][] data1 = {{1.0, 2.0, 3.0}, {4.0, 5.0, 6.0}, {7.0, 8.0, 9.0}};
+        ImmutableMatrix matrix1 = new ImmutableMatrix(data1);
+        Assertions.assertTrue(matrix.equals(matrix1));
+    }
+
+    @Test
+    public void testImmutableHashCode() {
+        double[][] data = {{1.0, 2.0, 3.0}, {4.0, 5.0, 6.0}, {7.0, 8.0, 9.0}};
+        ImmutableMatrix matrix = new ImmutableMatrix(data);
+        ImmutableMatrix matrix1 = new ImmutableMatrix(matrix);
+        Assertions.assertEquals(matrix.hashCode(), matrix1.hashCode());
+    }
 }
